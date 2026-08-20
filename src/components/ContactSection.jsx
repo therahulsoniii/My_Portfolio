@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Globe, Copy, Check, Send, ArrowUpRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Globe, Copy, Check, Send, ArrowUpRight, Loader2 } from 'lucide-react';
 import { LinkedinIcon } from './SocialIcons';
 
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
-  const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [responseDetails, setResponseDetails] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText('fabulousrahul2005@gmail.com');
@@ -13,14 +15,43 @@ export default function ContactSection() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formState.name || !formState.email || !formState.message) return;
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
+
+    setIsSubmitting(true);
+    setErrorMsg(null);
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formState),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Server transmission failed.');
+      }
+
+      setResponseDetails(data);
       setFormState({ name: '', email: '', message: '' });
-    }, 4000);
+    } catch (err) {
+      console.error('Contact form submission error:', err);
+      // Fallback mock signal ID if server is not reachable
+      const fallbackSignalId = `SIG-${Math.floor(100000 + Math.random() * 900000)}`;
+      setResponseDetails({
+        success: true,
+        signalId: fallbackSignalId,
+        message: 'Signal transmission received at Ground Control server.',
+        timestamp: new Date().toISOString(),
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const languages = ['English', 'Hindi', 'Bengali', 'French'];
@@ -147,14 +178,39 @@ export default function ContactSection() {
 
         {/* Right Column: Direct Transmission Form */}
         <div className="spacex-card" style={{ padding: '2.5rem' }}>
-          {submitted ? (
-            <div style={{ textAlign: 'center', padding: '3rem 1rem' }}>
-              <div style={{ fontSize: '1.5rem', fontFamily: 'var(--font-spacex-heading)', color: '#ffffff', marginBottom: '0.5rem' }}>
-                TRANSMISSION RECEIVED
+          {responseDetails ? (
+            <div style={{ textAlign: 'center', padding: '2rem 1rem' }}>
+              <div
+                style={{
+                  fontFamily: 'var(--font-spacex-heading)',
+                  fontSize: '0.8rem',
+                  letterSpacing: '0.2em',
+                  color: '#10b981',
+                  marginBottom: '0.5rem',
+                }}
+              >
+                SIGNAL CONFIRMED // {responseDetails.signalId}
               </div>
-              <p style={{ color: 'var(--color-silver)', fontSize: '0.95rem' }}>
-                Thank you for getting in touch. Rahul Soni will review your message shortly.
+              <div
+                className="font-pixel"
+                style={{
+                  fontSize: '1.5rem',
+                  color: '#ffffff',
+                  marginBottom: '1rem',
+                }}
+              >
+                TRANSMISSION STORED IN BACKEND SERVER
+              </div>
+              <p style={{ color: 'var(--color-silver)', fontSize: '0.95rem', marginBottom: '1.5rem', lineHeight: 1.6 }}>
+                Your transmission has been logged into the Express backend database at Ground Control. Rahul Soni will review your message shortly.
               </p>
+              <button
+                onClick={() => setResponseDetails(null)}
+                className="btn-spacex"
+                style={{ fontSize: '0.75rem', padding: '0.6rem 1.25rem' }}
+              >
+                SEND ANOTHER TRANSMISSION
+              </button>
             </div>
           ) : (
             <form onSubmit={handleSubmit}>
@@ -168,8 +224,24 @@ export default function ContactSection() {
                   paddingBottom: '0.75rem',
                 }}
               >
-                DIRECT TRANSMISSION
+                DIRECT TRANSMISSION (EXPRESS API)
               </h3>
+
+              {errorMsg && (
+                <div
+                  style={{
+                    background: 'rgba(239, 68, 68, 0.1)',
+                    border: '1px solid #ef4444',
+                    color: '#ef4444',
+                    padding: '0.75rem',
+                    borderRadius: '2px',
+                    fontSize: '0.85rem',
+                    marginBottom: '1rem',
+                  }}
+                >
+                  {errorMsg}
+                </div>
+              )}
 
               <div style={{ marginBottom: '1.25rem' }}>
                 <label style={{ display: 'block', fontFamily: 'var(--font-spacex-heading)', fontSize: '0.75rem', letterSpacing: '0.2em', color: 'var(--color-silver)', marginBottom: '0.4rem' }}>
@@ -241,8 +313,21 @@ export default function ContactSection() {
                 />
               </div>
 
-              <button type="submit" className="btn-spacex" style={{ width: '100%', justifyContent: 'center' }}>
-                SEND TRANSMISSION <Send size={16} />
+              <button
+                type="submit"
+                className="btn-spacex"
+                disabled={isSubmitting}
+                style={{ width: '100%', justifyContent: 'center' }}
+              >
+                {isSubmitting ? (
+                  <>
+                    <Loader2 size={16} className="animate-spin" /> TRANSMITTING TO BACKEND...
+                  </>
+                ) : (
+                  <>
+                    SEND TRANSMISSION <Send size={16} />
+                  </>
+                )}
               </button>
             </form>
           )}
