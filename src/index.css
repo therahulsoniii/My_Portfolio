@@ -1,0 +1,191 @@
+:root {
+  --bg-dark: #000000;
+  --bg-card: #090a0e;
+  --bg-card-hover: #12141c;
+  --border-light: rgba(255, 255, 255, 0.15);
+  --border-active: rgba(255, 255, 255, 0.6);
+  
+  --color-white: #ffffff;
+  --color-silver: #9aa0ac;
+  --color-dim: #5c6270;
+  --color-accent-blue: #00d2ff;
+  
+  --font-spacex-heading: 'Barlow Condensed', 'Space Grotesk', sans-serif;
+  --font-pixel: 'Pixelify Sans', 'Silkscreen', monospace;
+  --font-spacex-body: 'Barlow', 'Inter', sans-serif;
+  --font-mono: 'Space Grotesk', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--color-white);
+  font-family: var(--font-spacex-body);
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Minimalist Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* Pixel Font Utility */
+.font-pixel {
+  font-family: var(--font-pixel) !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* SpaceX Headings */
+h1, h2, h3, .font-spacex-heading {
+  font-family: var(--font-spacex-heading);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* SpaceX Minimalist Border Cards */
+.spacex-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  padding: 2rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.spacex-card:hover {
+  border-color: var(--border-active);
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+}
+
+/* SpaceX Outlined Button */
+.btn-spacex {
+  background: transparent;
+  border: 1px solid var(--color-white);
+  color: var(--color-white);
+  font-family: var(--font-spacex-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  padding: 0.85rem 2rem;
+  border-radius: 2px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+
+.btn-spacex:hover {
+  background: var(--color-white);
+  color: #000000;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+}
+
+.btn-spacex-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-light);
+  color: var(--color-white);
+  font-family: var(--font-spacex-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  padding: 0.85rem 2rem;
+  border-radius: 2px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+
+.btn-spacex-secondary:hover {
+  border-color: var(--color-white);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Section Containers */
+.spacex-section {
+  padding: 6rem 2rem;
+  max-width: 1300px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+.section-label {
+  font-family: var(--font-pixel);
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  color: var(--color-silver);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-family: var(--font-pixel);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  color: var(--color-white);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: var(--color-white);
+}
+
+/* SpaceX Metric Spec Badge */
+.spacex-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--border-light);
+  border-radius: 2px;
+  font-family: var(--font-pixel);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--color-silver);
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.spacex-badge-active {
+  border-color: var(--color-white);
+  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.1);
+}
