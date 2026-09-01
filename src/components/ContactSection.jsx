@@ -22,6 +22,8 @@ export default function ContactSection() {
     setIsSubmitting(true);
     setErrorMsg(null);
 
+    const signalId = `SIG-${Math.floor(100000 + Math.random() * 900000)}`;
+
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
@@ -31,24 +33,38 @@ export default function ContactSection() {
         body: JSON.stringify(formState),
       });
 
-      const data = await res.json();
+      const contentType = res.headers.get('content-type');
+      if (res.ok && contentType && contentType.includes('application/json')) {
+        const data = await res.json();
+        setResponseDetails(data);
+      } else {
+        // Static GitHub Pages fallback - trigger mailto and display signal confirmation
+        const mailtoUrl = `mailto:fabulousrahul2005@gmail.com?subject=SpaceX%20Portfolio%20Signal%20from%20${encodeURIComponent(formState.name)}&body=${encodeURIComponent(formState.message + '\n\nSender Email: ' + formState.email)}`;
+        window.location.href = mailtoUrl;
 
-      if (!res.ok) {
-        throw new Error(data.error || 'Server transmission failed.');
+        setResponseDetails({
+          success: true,
+          signalId,
+          message: 'Signal transmission dispatched to fabulousrahul2005@gmail.com.',
+          timestamp: new Date().toISOString(),
+        });
       }
 
-      setResponseDetails(data);
       setFormState({ name: '', email: '', message: '' });
     } catch (err) {
-      console.error('Contact form submission error:', err);
-      // Fallback mock signal ID if server is not reachable
-      const fallbackSignalId = `SIG-${Math.floor(100000 + Math.random() * 900000)}`;
+      console.warn('Backend API offline (Static Host environment). Triggering mailto relay:', err);
+
+      // Fallback mailto dispatch for static hosting environments
+      const mailtoUrl = `mailto:fabulousrahul2005@gmail.com?subject=SpaceX%20Portfolio%20Signal%20from%20${encodeURIComponent(formState.name)}&body=${encodeURIComponent(formState.message + '\n\nSender Email: ' + formState.email)}`;
+      window.location.href = mailtoUrl;
+
       setResponseDetails({
         success: true,
-        signalId: fallbackSignalId,
-        message: 'Signal transmission received at Ground Control server.',
+        signalId,
+        message: 'Signal transmission dispatched to fabulousrahul2005@gmail.com.',
         timestamp: new Date().toISOString(),
       });
+      setFormState({ name: '', email: '', message: '' });
     } finally {
       setIsSubmitting(false);
     }
@@ -199,10 +215,10 @@ export default function ContactSection() {
                   marginBottom: '1rem',
                 }}
               >
-                TRANSMISSION STORED IN BACKEND SERVER
+                TRANSMISSION SENT TO FABULOUSRAHUL2005@GMAIL.COM
               </div>
               <p style={{ color: 'var(--color-silver)', fontSize: '0.95rem', marginBottom: '1.5rem', lineHeight: 1.6 }}>
-                Your transmission has been logged into the Express backend database at Ground Control. Rahul Soni will review your message shortly.
+                Your transmission has been logged and routed to Ground Control (fabulousrahul2005@gmail.com). Rahul Soni will review your message shortly.
               </p>
               <button
                 onClick={() => setResponseDetails(null)}
@@ -224,7 +240,7 @@ export default function ContactSection() {
                   paddingBottom: '0.75rem',
                 }}
               >
-                DIRECT TRANSMISSION (EXPRESS API)
+                DIRECT TRANSMISSION
               </h3>
 
               {errorMsg && (
@@ -321,7 +337,7 @@ export default function ContactSection() {
               >
                 {isSubmitting ? (
                   <>
-                    <Loader2 size={16} className="animate-spin" /> TRANSMITTING TO BACKEND...
+                    <Loader2 size={16} className="animate-spin" /> TRANSMITTING...
                   </>
                 ) : (
                   <>

@@ -3,13 +3,15 @@ import { ArrowUpRight, Cpu, Compass, Database } from 'lucide-react';
 import { GithubIcon } from './SocialIcons';
 
 export default function ProjectsSection() {
+  const baseUrl = import.meta.env.BASE_URL || './';
+
   const initiatives = [
     {
       code: 'PROJECT 01',
       category: 'SPACE TECH & PROPULSION',
       title: 'Rocket Propulsion & Performance Telemetry Simulator',
       subtitle: 'Python & SQL based analytical tool for calculating thrust coefficients and fuel consumption curves.',
-      image: '/spacex_launch.jpg',
+      image: `${baseUrl}spacex_launch.jpg`,
       caption: 'Photo Credit: SpaceX Public Mission Archives',
       tags: ['Python', 'SQL', 'Space Systems', 'Data Analysis'],
       overview:
@@ -20,7 +22,7 @@ export default function ProjectsSection() {
       category: 'COMPUTER SCIENCE CORE',
       title: 'High-Performance GPU Parallel Computing & DSA Engine',
       subtitle: 'Low-level C & Data Structures algorithm pipeline optimized for parallel hardware computing.',
-      image: '/nvidia_gpu_silicon.jpg',
+      image: `${baseUrl}nvidia_gpu_silicon.jpg`,
       caption: 'Photo Credit: NVIDIA Microarchitecture & Hardware Engineering',
       tags: ['C Language', 'DSA', 'DBMS', 'Operating Systems'],
       overview:
@@ -31,7 +33,7 @@ export default function ProjectsSection() {
       category: 'DATA SCIENCE & AI',
       title: 'NVIDIA DGX AI Telemetry & Machine Learning Pipeline',
       subtitle: 'Data science pipeline using Pandas & Machine Learning models running on AI supercomputing clusters.',
-      image: '/nvidia_ai_supercomputer.jpg',
+      image: `${baseUrl}nvidia_ai_supercomputer.jpg`,
       caption: 'Photo Credit: NVIDIA AI Supercomputing & Data Center Infrastructure',
       tags: ['Python', 'Pandas', 'Machine Learning', 'Data Analysis'],
       overview:
