@@ -116,13 +116,23 @@ export default function Navbar() {
         </nav>
 
         {/* Action Controls */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <a
+            href="https://github.com/therahulsoniii"
+            target="_blank"
+            rel="noreferrer"
+            className="btn-spacex"
+            style={{ padding: '0.5rem 1rem', fontSize: '0.75rem' }}
+          >
+            <GithubIcon size={14} /> GITHUB <ArrowUpRight size={12} />
+          </a>
+
           <a
             href="https://www.linkedin.com/in/therahulsoniii"
             target="_blank"
             rel="noreferrer"
             className="btn-spacex"
-            style={{ padding: '0.5rem 1.25rem', fontSize: '0.75rem' }}
+            style={{ padding: '0.5rem 1rem', fontSize: '0.75rem' }}
           >
             <LinkedinIcon size={14} /> LINKEDIN <ArrowUpRight size={12} />
           </a>
@@ -175,6 +185,26 @@ export default function Navbar() {
               {link.name}
             </a>
           ))}
+          <div style={{ display: 'flex', gap: '0.75rem', marginTop: '0.5rem' }}>
+            <a
+              href="https://github.com/therahulsoniii"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-spacex"
+              style={{ padding: '0.5rem 1rem', fontSize: '0.75rem' }}
+            >
+              <GithubIcon size={14} /> GITHUB <ArrowUpRight size={12} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/therahulsoniii"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-spacex"
+              style={{ padding: '0.5rem 1rem', fontSize: '0.75rem' }}
+            >
+              <LinkedinIcon size={14} /> LINKEDIN <ArrowUpRight size={12} />
+            </a>
+          </div>
         </div>
       )}
 
