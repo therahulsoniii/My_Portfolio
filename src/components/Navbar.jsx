@@ -34,7 +34,7 @@ export default function Navbar() {
         background: scrolled ? 'rgba(0, 0, 0, 0.9)' : 'transparent',
         backdropFilter: scrolled ? 'blur(12px)' : 'none',
         borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
-        padding: scrolled ? '1rem 2.5rem' : '1.75rem 2.5rem',
+        padding: scrolled ? '0.85rem 2rem' : '1.5rem 2rem',
       }}
     >
       <div
@@ -116,25 +116,27 @@ export default function Navbar() {
         </nav>
 
         {/* Action Controls */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
           <a
             href="https://github.com/therahulsoniii"
             target="_blank"
             rel="noreferrer"
-            className="btn-spacex"
-            style={{ padding: '0.5rem 1rem', fontSize: '0.75rem' }}
+            className="btn-spacex nav-social-btn"
           >
-            <GithubIcon size={14} /> GITHUB <ArrowUpRight size={12} />
+            <GithubIcon size={14} />
+            <span>GITHUB</span>
+            <ArrowUpRight size={12} />
           </a>
 
           <a
             href="https://www.linkedin.com/in/therahulsoniii"
             target="_blank"
             rel="noreferrer"
-            className="btn-spacex"
-            style={{ padding: '0.5rem 1rem', fontSize: '0.75rem' }}
+            className="btn-spacex nav-social-btn"
           >
-            <LinkedinIcon size={14} /> LINKEDIN <ArrowUpRight size={12} />
+            <LinkedinIcon size={14} />
+            <span>LINKEDIN</span>
+            <ArrowUpRight size={12} />
           </a>
 
           {/* Mobile Menu Button */}
@@ -147,6 +149,7 @@ export default function Navbar() {
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
+              padding: '0.25rem',
             }}
             className="mobile-toggle"
           >
@@ -185,36 +188,25 @@ export default function Navbar() {
               {link.name}
             </a>
           ))}
-          <div style={{ display: 'flex', gap: '0.75rem', marginTop: '0.5rem' }}>
-            <a
-              href="https://github.com/therahulsoniii"
-              target="_blank"
-              rel="noreferrer"
-              className="btn-spacex"
-              style={{ padding: '0.5rem 1rem', fontSize: '0.75rem' }}
-            >
-              <GithubIcon size={14} /> GITHUB <ArrowUpRight size={12} />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/therahulsoniii"
-              target="_blank"
-              rel="noreferrer"
-              className="btn-spacex"
-              style={{ padding: '0.5rem 1rem', fontSize: '0.75rem' }}
-            >
-              <LinkedinIcon size={14} /> LINKEDIN <ArrowUpRight size={12} />
-            </a>
-          </div>
         </div>
       )}
 
       <style>{`
+        .nav-social-btn {
+          padding: 0.5rem 1rem !important;
+          font-size: 0.75rem !important;
+          display: inline-flex !important;
+          align-items: center !important;
+          gap: 0.4rem !important;
+        }
         @media (min-width: 900px) {
           .desktop-nav { display: flex !important; }
           .mobile-toggle { display: none !important; }
         }
-        @media (max-width: 600px) {
+        @media (max-width: 640px) {
           .brand-sub { display: none !important; }
+          .nav-social-btn span { display: none !important; }
+          .nav-social-btn { padding: 0.45rem 0.6rem !important; }
         }
       `}</style>
     </header>
