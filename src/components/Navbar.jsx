@@ -31,10 +31,10 @@ export default function Navbar() {
         right: 0,
         zIndex: 100,
         transition: 'all 0.3s ease',
-        background: scrolled ? 'rgba(0, 0, 0, 0.9)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(12px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
-        padding: scrolled ? '0.85rem 2rem' : '1.5rem 2rem',
+        background: scrolled ? 'rgba(0, 0, 0, 0.92)' : 'rgba(0, 0, 0, 0.4)',
+        backdropFilter: 'blur(12px)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+        padding: '1rem 2rem',
       }}
     >
       <div
@@ -44,6 +44,7 @@ export default function Navbar() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
+          gap: '1rem',
         }}
       >
         {/* Brand */}
@@ -55,14 +56,15 @@ export default function Navbar() {
             display: 'flex',
             alignItems: 'center',
             gap: '0.75rem',
+            flexShrink: 0,
           }}
         >
           <span
             style={{
               fontFamily: 'var(--font-spacex-heading)',
               fontWeight: 800,
-              fontSize: '1.25rem',
-              letterSpacing: '0.22em',
+              fontSize: '1.2rem',
+              letterSpacing: '0.2em',
               textTransform: 'uppercase',
             }}
           >
@@ -89,7 +91,7 @@ export default function Navbar() {
           style={{
             display: 'none',
             alignItems: 'center',
-            gap: '2.5rem',
+            gap: '2rem',
           }}
           className="desktop-nav"
         >
@@ -103,7 +105,7 @@ export default function Navbar() {
                 fontWeight: 600,
                 color: 'var(--color-silver)',
                 textDecoration: 'none',
-                letterSpacing: '0.2em',
+                letterSpacing: '0.18em',
                 textTransform: 'uppercase',
                 transition: 'color 0.2s ease',
               }}
@@ -116,15 +118,16 @@ export default function Navbar() {
         </nav>
 
         {/* Action Controls */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexShrink: 0 }}>
           <a
             href="https://github.com/therahulsoniii"
             target="_blank"
             rel="noreferrer"
             className="btn-spacex nav-social-btn"
+            title="GitHub Profile"
           >
             <GithubIcon size={14} />
-            <span>GITHUB</span>
+            <span className="btn-label">GITHUB</span>
             <ArrowUpRight size={12} />
           </a>
 
@@ -133,9 +136,10 @@ export default function Navbar() {
             target="_blank"
             rel="noreferrer"
             className="btn-spacex nav-social-btn"
+            title="LinkedIn Profile"
           >
             <LinkedinIcon size={14} />
-            <span>LINKEDIN</span>
+            <span className="btn-label">LINKEDIN</span>
             <ArrowUpRight size={12} />
           </a>
 
@@ -188,24 +192,49 @@ export default function Navbar() {
               {link.name}
             </a>
           ))}
+          <div style={{ display: 'flex', gap: '0.75rem', marginTop: '0.5rem' }}>
+            <a
+              href="https://github.com/therahulsoniii"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-spacex"
+              style={{ padding: '0.5rem 0.85rem', fontSize: '0.75rem' }}
+            >
+              <GithubIcon size={14} /> GITHUB <ArrowUpRight size={12} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/therahulsoniii"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-spacex"
+              style={{ padding: '0.5rem 0.85rem', fontSize: '0.75rem' }}
+            >
+              <LinkedinIcon size={14} /> LINKEDIN <ArrowUpRight size={12} />
+            </a>
+          </div>
         </div>
       )}
 
       <style>{`
         .nav-social-btn {
-          padding: 0.5rem 1rem !important;
+          padding: 0.45rem 0.85rem !important;
           font-size: 0.75rem !important;
           display: inline-flex !important;
           align-items: center !important;
-          gap: 0.4rem !important;
+          gap: 0.35rem !important;
+          white-space: nowrap !important;
         }
-        @media (min-width: 900px) {
+        @media (min-width: 1024px) {
           .desktop-nav { display: flex !important; }
           .mobile-toggle { display: none !important; }
         }
+        @media (max-width: 1023px) {
+          .desktop-nav { display: none !important; }
+          .mobile-toggle { display: flex !important; }
+        }
         @media (max-width: 640px) {
           .brand-sub { display: none !important; }
-          .nav-social-btn span { display: none !important; }
+          .nav-social-btn .btn-label { display: none !important; }
           .nav-social-btn { padding: 0.45rem 0.6rem !important; }
         }
       `}</style>
