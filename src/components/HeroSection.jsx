@@ -22,7 +22,7 @@ export default function HeroSection() {
         {/* Category Label */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
           <span className="spacex-badge spacex-badge-active">
-            B.TECH CSE (AI & DATA SCIENCE)
+            B.TECH CSE (AI & ML ENGINEERING)
           </span>
           <span className="spacex-badge">
             SPACE TECHNOLOGY & ORBITAL MECHANICS
@@ -57,7 +57,7 @@ export default function HeroSection() {
             textTransform: 'uppercase',
           }}
         >
-          SOFTWARE ENGINEERING • DATA SCIENCE • SPACE SYSTEMS
+          SOFTWARE ENGINEERING • AI & ML ENGINEERING • SPACE SYSTEMS
         </h2>
 
         {/* Summary Paragraph */}
@@ -71,7 +71,7 @@ export default function HeroSection() {
             fontWeight: 400,
           }}
         >
-          Computer Science Engineering student specializing in Artificial Intelligence and Data Science with a strong foundation in Python, C, SQL, and database systems. Passionate about software engineering, data science, and space technology. Currently expanding knowledge in rocket propulsion, orbital mechanics, and space systems.
+          Computer Science Engineering student specializing in Artificial Intelligence and Machine Learning Engineering with a strong foundation in Python, C, SQL, and database systems. Passionate about software engineering, machine learning, and space technology. Currently expanding knowledge in rocket propulsion, orbital mechanics, and space systems.
         </p>
 
         {/* Primary Action Buttons */}
@@ -109,7 +109,7 @@ export default function HeroSection() {
             DEGREE & SPECIALIZATION
           </div>
           <div style={{ fontFamily: 'var(--font-spacex-heading)', fontSize: '1.1rem', fontWeight: 700, color: '#fff', letterSpacing: '0.08em' }}>
-            B.TECH CSE (AI & DATA SCIENCE)
+            B.TECH CSE (AI & ML ENGINEERING)
           </div>
         </div>
 

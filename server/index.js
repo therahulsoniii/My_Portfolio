@@ -144,7 +144,7 @@ app.get('/api/health', (req, res) => {
 app.get('/api/telemetry', (req, res) => {
   res.json({
     callsign: 'RAHUL SONI',
-    specialization: 'Artificial Intelligence & Data Science',
+    specialization: 'Artificial Intelligence & Machine Learning Engineering',
     degree: 'B.Tech Computer Science & Engineering',
     institution: 'Lovely Professional University (LPU)',
     status: 'ALL SYSTEMS NOMINAL',

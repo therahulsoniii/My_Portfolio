@@ -12,8 +12,8 @@ export default function EducationSection() {
 
   const focusAreas = [
     'Software Engineering',
-    'Data Science & AI',
-    'Machine Learning',
+    'AI & ML Engineering',
+    'Machine Learning Systems',
     'Space Technology',
     'Rocket Propulsion',
     'Orbital Mechanics',
@@ -82,12 +82,12 @@ export default function EducationSection() {
               Lovely Professional University (LPU)
             </div>
             <div style={{ fontSize: '0.95rem', color: 'var(--color-silver)', marginTop: '0.25rem' }}>
-              Specialization in Artificial Intelligence & Data Science
+              Specialization in Artificial Intelligence & Machine Learning Engineering
             </div>
           </div>
 
           <p style={{ color: 'var(--color-silver)', fontSize: '0.95rem', lineHeight: 1.7 }}>
-            Pursuing a rigorous engineering curriculum combining core computer science fundamentals with advanced topics in AI, Data Science, and Space Systems Engineering.
+            Pursuing a rigorous engineering curriculum combining core computer science fundamentals with advanced topics in AI, Machine Learning, and Space Systems Engineering.
           </p>
         </div>
 

@@ -30,14 +30,14 @@ export default function ProjectsSection() {
     },
     {
       code: 'PROJECT 03',
-      category: 'DATA SCIENCE & AI',
+      category: 'AI & ML ENGINEERING',
       title: 'NVIDIA DGX AI Telemetry & Machine Learning Pipeline',
-      subtitle: 'Data science pipeline using Pandas & Machine Learning models running on AI supercomputing clusters.',
+      subtitle: 'Machine learning pipeline using PyTorch & Pandas running on AI supercomputing clusters.',
       image: `${baseUrl}nvidia_ai_supercomputer.jpg`,
       caption: 'Photo Credit: NVIDIA AI Supercomputing & Data Center Infrastructure',
-      tags: ['Python', 'Pandas', 'Machine Learning', 'Data Analysis'],
+      tags: ['Python', 'Machine Learning', 'PyTorch', 'Pandas'],
       overview:
-        'Applying machine learning models and Pandas data pipelines on high-density AI server clusters to process complex telemetry streams and detect anomalies.',
+        'Applying machine learning models and neural network pipelines on high-density AI server clusters to process complex telemetry streams and detect anomalies.',
     },
   ];
 

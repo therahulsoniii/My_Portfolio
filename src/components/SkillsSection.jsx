@@ -15,13 +15,13 @@ export default function SkillsSection() {
     },
     {
       code: 'SPEC 02',
-      title: 'DATA SCIENCE & AI',
+      title: 'AI & ML ENGINEERING',
       icon: Database,
       items: [
-        { name: 'Data Analysis', status: 'Proficient' },
-        { name: 'Machine Learning', status: 'Core Focus' },
+        { name: 'Machine Learning Models', status: 'Core Focus' },
+        { name: 'Neural Networks & AI', status: 'Primary Area' },
         { name: 'Pandas Framework', status: 'Proficient' },
-        { name: 'NumPy Library', status: 'Currently Learning' },
+        { name: 'NumPy & Data Analysis', status: 'Proficient' },
       ],
     },
     {

@@ -35,7 +35,7 @@ export default function Footer() {
             textTransform: 'uppercase',
           }}
         >
-          RAHUL SONI © {new Date().getFullYear()} // COMPUTER SCIENCE (AI & DATA SCIENCE) • SPACE SYSTEMS
+          RAHUL SONI © {new Date().getFullYear()} // COMPUTER SCIENCE (AI & ML ENGINEERING) • SPACE SYSTEMS
         </div>
 
         <button
