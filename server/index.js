@@ -12,7 +12,7 @@ const app = express();
 let PORT = process.env.PORT || 5000;
 
 // Recipient email address for all website contact notifications
-const TARGET_EMAIL = process.env.NOTIFICATION_EMAIL || 'fabulousrahul2005@gmail.com';
+const TARGET_EMAIL = process.env.NOTIFICATION_EMAIL || 'justrahul2005@gmail.com';
 
 // Enable CORS and JSON parsing
 app.use(cors());

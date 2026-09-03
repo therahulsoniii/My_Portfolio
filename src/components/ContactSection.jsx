@@ -10,7 +10,7 @@ export default function ContactSection() {
   const [errorMsg, setErrorMsg] = useState(null);
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText('fabulousrahul2005@gmail.com');
+    navigator.clipboard.writeText('justrahul2005@gmail.com');
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -39,13 +39,13 @@ export default function ContactSection() {
         setResponseDetails(data);
       } else {
         // Static GitHub Pages fallback - trigger mailto and display signal confirmation
-        const mailtoUrl = `mailto:fabulousrahul2005@gmail.com?subject=SpaceX%20Portfolio%20Signal%20from%20${encodeURIComponent(formState.name)}&body=${encodeURIComponent(formState.message + '\n\nSender Email: ' + formState.email)}`;
+        const mailtoUrl = `mailto:justrahul2005@gmail.com?subject=SpaceX%20Portfolio%20Signal%20from%20${encodeURIComponent(formState.name)}&body=${encodeURIComponent(formState.message + '\n\nSender Email: ' + formState.email)}`;
         window.location.href = mailtoUrl;
 
         setResponseDetails({
           success: true,
           signalId,
-          message: 'Signal transmission dispatched to fabulousrahul2005@gmail.com.',
+          message: 'Signal transmission dispatched to justrahul2005@gmail.com.',
           timestamp: new Date().toISOString(),
         });
       }
@@ -55,13 +55,13 @@ export default function ContactSection() {
       console.warn('Backend API offline (Static Host environment). Triggering mailto relay:', err);
 
       // Fallback mailto dispatch for static hosting environments
-      const mailtoUrl = `mailto:fabulousrahul2005@gmail.com?subject=SpaceX%20Portfolio%20Signal%20from%20${encodeURIComponent(formState.name)}&body=${encodeURIComponent(formState.message + '\n\nSender Email: ' + formState.email)}`;
+      const mailtoUrl = `mailto:justrahul2005@gmail.com?subject=SpaceX%20Portfolio%20Signal%20from%20${encodeURIComponent(formState.name)}&body=${encodeURIComponent(formState.message + '\n\nSender Email: ' + formState.email)}`;
       window.location.href = mailtoUrl;
 
       setResponseDetails({
         success: true,
         signalId,
-        message: 'Signal transmission dispatched to fabulousrahul2005@gmail.com.',
+        message: 'Signal transmission dispatched to justrahul2005@gmail.com.',
         timestamp: new Date().toISOString(),
       });
       setFormState({ name: '', email: '', message: '' });
@@ -108,7 +108,7 @@ export default function ContactSection() {
               </div>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(255, 255, 255, 0.03)', padding: '0.75rem 1rem', border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '2px' }}>
                 <span style={{ color: '#ffffff', fontWeight: 600, fontSize: '0.95rem' }}>
-                  fabulousrahul2005@gmail.com
+                  justrahul2005@gmail.com
                 </span>
                 <button
                   onClick={handleCopyEmail}
@@ -151,31 +151,6 @@ export default function ContactSection() {
               </div>
             </div>
 
-            {/* Professional Profile */}
-            <div>
-              <div style={{ fontFamily: 'var(--font-spacex-heading)', fontSize: '0.75rem', letterSpacing: '0.2em', color: 'var(--color-silver)', marginBottom: '0.4rem' }}>
-                LINKEDIN NETWORK
-              </div>
-              <a
-                href="https://www.linkedin.com/in/therahulsoniii"
-                target="_blank"
-                rel="noreferrer"
-                style={{
-                  color: '#ffffff',
-                  textDecoration: 'none',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.4rem',
-                  fontFamily: 'var(--font-spacex-heading)',
-                  fontSize: '0.95rem',
-                  letterSpacing: '0.1em',
-                  borderBottom: '1px solid #ffffff',
-                }}
-              >
-                <LinkedinIcon size={16} /> linkedin.com/in/therahulsoniii <ArrowUpRight size={14} />
-              </a>
-            </div>
-
             {/* Languages */}
             <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.1)', paddingTop: '1.25rem' }}>
               <div style={{ fontFamily: 'var(--font-spacex-heading)', fontSize: '0.75rem', letterSpacing: '0.2em', color: 'var(--color-silver)', marginBottom: '0.6rem' }}>
@@ -210,15 +185,15 @@ export default function ContactSection() {
               <div
                 className="font-pixel"
                 style={{
-                  fontSize: '1.5rem',
+                  fontSize: '1.4rem',
                   color: '#ffffff',
                   marginBottom: '1rem',
                 }}
               >
-                TRANSMISSION SENT TO FABULOUSRAHUL2005@GMAIL.COM
+                TRANSMISSION SENT TO JUSTRAHUL2005@GMAIL.COM
               </div>
               <p style={{ color: 'var(--color-silver)', fontSize: '0.95rem', marginBottom: '1.5rem', lineHeight: 1.6 }}>
-                Your transmission has been logged and routed to Ground Control (fabulousrahul2005@gmail.com). Rahul Soni will review your message shortly.
+                Your transmission has been logged and routed to Ground Control (justrahul2005@gmail.com). Rahul Soni will review your message shortly.
               </p>
               <button
                 onClick={() => setResponseDetails(null)}
