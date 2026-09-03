@@ -50,6 +50,7 @@ export default function SkillsSection() {
       title: 'TOOLS & ENVIRONMENT',
       icon: Wrench,
       items: [
+        { name: 'n8n Workflow Automation', status: 'AI & Process Automations' },
         { name: 'Git & GitHub', status: 'Version Control' },
         { name: 'VS Code', status: 'Primary IDE' },
         { name: 'Linux OS', status: 'Development Environment' },
